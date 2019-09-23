@@ -4,7 +4,7 @@ import math
 import random
 import numpy
 
-random.seed(1)
+# random.seed(1)
 # General Functions
 def rand(a, b):
 
@@ -24,8 +24,8 @@ class Rede:
         self.max_interacoes = max_interacoes
         self.precisao = precisao
 
-        self.qtd_entrada = qtd_entrada + 1  # +1 -> bias
-        self.qtd_neuronios_camada_escondida = qtd_neuronios_camada_escondida + 1 # +1 -> bias
+        self.qtd_entrada = qtd_entrada # +1 -> bias
+        self.qtd_neuronios_camada_escondida = qtd_neuronios_camada_escondida # +1 -> bias
         self.qtd_neuronios_camada_saida = qtd_neuronios_camada_saida
 
         self.I_camada_escondida = numpy.ones(self.qtd_neuronios_camada_escondida)
@@ -35,8 +35,8 @@ class Rede:
         self.saida_camada_escondida = numpy.ones(self.qtd_neuronios_camada_escondida)
         self.saida_camada_de_saida = numpy.ones(self.qtd_neuronios_camada_saida)
 
-        self.entrada[self.qtd_entrada - 1] = -1 # ENTRADA BIAS CAMADA ESCONDIDA
-        self.saida_camada_escondida[self.qtd_neuronios_camada_escondida - 1] = -1 # ENTRADA BIAS CAMADA DE SAIDA
+        # self.entrada[self.qtd_entrada - 1] = -1 # ENTRADA BIAS CAMADA ESCONDIDA
+        # self.saida_camada_escondida[self.qtd_neuronios_camada_escondida - 1] = -1 # ENTRADA BIAS CAMADA DE SAIDA
 
         self.setup_pesos_camada_escondida()
         self.setup_pesos_camada_de_saida()
@@ -44,28 +44,28 @@ class Rede:
 
 
     def setup_pesos_camada_escondida(self):
-        self.pesos_camada_escondida = numpy.ones((self.qtd_entrada, self.qtd_neuronios_camada_escondida))
+        self.pesos_camada_escondida = numpy.ones((self.qtd_entrada + 1, self.qtd_neuronios_camada_escondida))
 
         print("CAMADA ESCONDIDA: ---------------------------------------------------------")
-        for i in range(self.qtd_entrada): # Camada escondida
+        for i in range(self.qtd_entrada + 1): # Camada escondida
             for j in range(self.qtd_neuronios_camada_escondida):
                 self.pesos_camada_escondida[i][j] = rand(-0.5, 0.5)
-            print("Pesos neuronio[{}]: {}".format(i, self.pesos_camada_escondida[i]))
+            print("Peso[{}]: {}".format(i, self.pesos_camada_escondida[i]))
 
 
     def setup_pesos_camada_de_saida(self):
 
-        self.pesos_camada_saida = numpy.ones((self.qtd_neuronios_camada_escondida, self.qtd_neuronios_camada_saida))
+        self.pesos_camada_saida = numpy.ones((self.qtd_neuronios_camada_escondida + 1, self.qtd_neuronios_camada_saida))
 
         print("CAMADA DE SAIDA: ---------------------------------------------------------")
-        for i in range(self.qtd_neuronios_camada_escondida): # Camada de saida
+        for i in range(self.qtd_neuronios_camada_escondida + 1): # Camada de saida
             for j in range(self.qtd_neuronios_camada_saida):
                 self.pesos_camada_saida[i][j] = rand(-0.5, 0.5)
-            print("Pesos neuronio[{}]: {}".format(i, self.pesos_camada_saida[i]))
+            print("Peso[{}]: {}".format(i, self.pesos_camada_saida[i]))
 
     # FORWARD FUNCTIONS
     def forward(self, entradas):
-        for i in range(self.qtd_entrada - 1):
+        for i in range(self.qtd_entrada):
             self.entrada[i] = entradas[i]
 
         self.run_camada_escondida()
@@ -78,6 +78,7 @@ class Rede:
             somatorio = 0
             for i in range(self.qtd_entrada):
                 somatorio = somatorio + self.entrada[i] * self.pesos_camada_escondida[i][j]
+            somatorio = somatorio + (-1 * self.pesos_camada_escondida[self.qtd_entrada][j])
             self.I_camada_escondida[j] = somatorio
             self.saida_camada_escondida[j] = funcao_ativacao_tangente_hiperbolica(somatorio)
 
@@ -86,6 +87,7 @@ class Rede:
             somatorio = 0
             for i in range(self.qtd_neuronios_camada_escondida):
                 somatorio = somatorio + self.saida_camada_escondida[i] * self.pesos_camada_saida[i][j]
+            somatorio = somatorio + (-1 * self.pesos_camada_saida[self.qtd_neuronios_camada_escondida][j])
             self.I_camada_de_saida[j] = somatorio
             self.saida_camada_de_saida[j] = funcao_ativacao_tangente_hiperbolica(somatorio)
 
