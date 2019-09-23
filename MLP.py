@@ -181,8 +181,9 @@ class Rede:
         eqm = 1000
         erro_anterior = 0
 
-        while (epocas < self.max_interacoes and abs(eqm - erro_anterior) > 0.01):
+        while (epocas < self.max_interacoes and abs(eqm - erro_anterior) > self.precisao):
 
+            # random.shuffle(entradas_saidas)
             eqm = 0
             erro_anterior = eqm
             erro = 0
@@ -200,3 +201,4 @@ class Rede:
             epocas += 1
 
         print("Epocas: {}".format(epocas))
+        # print("EQM: {} / EQM ANTERIOR: {}".format(eqm, erro_anterior))
