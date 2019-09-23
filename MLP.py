@@ -4,7 +4,7 @@ import math
 import random
 import numpy
 
-# random.seed(1)
+random.seed(2)
 # General Functions
 def rand(a, b):
 
@@ -48,9 +48,12 @@ class Rede:
 
         print("CAMADA ESCONDIDA: ---------------------------------------------------------")
         for i in range(self.qtd_entrada + 1): # Camada escondida
+
+            print("Peso[{}]:".format(i))
+
             for j in range(self.qtd_neuronios_camada_escondida):
                 self.pesos_camada_escondida[i][j] = rand(-0.5, 0.5)
-            print("Peso[{}]: {}".format(i, self.pesos_camada_escondida[i]))
+                print("{}".format(self.pesos_camada_escondida[i][j]))
 
 
     def setup_pesos_camada_de_saida(self):
@@ -58,10 +61,14 @@ class Rede:
         self.pesos_camada_saida = numpy.ones((self.qtd_neuronios_camada_escondida + 1, self.qtd_neuronios_camada_saida))
 
         print("CAMADA DE SAIDA: ---------------------------------------------------------")
+
         for i in range(self.qtd_neuronios_camada_escondida + 1): # Camada de saida
+
+            print("Peso[{}]:".format(i))
+
             for j in range(self.qtd_neuronios_camada_saida):
                 self.pesos_camada_saida[i][j] = rand(-0.5, 0.5)
-            print("Peso[{}]: {}".format(i, self.pesos_camada_saida[i]))
+                print("{}".format(self.pesos_camada_saida[i][j]))
 
     # FORWARD FUNCTIONS
     def forward(self, entradas):
@@ -137,22 +144,35 @@ class Rede:
 
         for i in range(self.qtd_neuronios_camada_escondida):
             for j in range(self.qtd_neuronios_camada_saida):
-                change = residuos_saida[j] * self.saida_camada_escondida[i]
-                self.pesos_camada_saida[i][j] = self.pesos_camada_saida[i][
-                    j] + (self.taxa_aprendizado * change)
+                if i != self.qtd_entrada:
+                    self.pesos_camada_saida[i][j] += (self.taxa_aprendizado * residuos_saida[j] * self.saida_camada_escondida[i])
+                else:
+                    self.pesos_camada_escondida[i][j] += (self.taxa_aprendizado * residuos_saida[j] * -1)
+
 
     def ajustar_pesos_camada_escondida(self, residuos_escondida):
 
-        for i in range(self.qtd_entrada):
+        for i in range(self.qtd_entrada + 1):
             for j in range(self.qtd_neuronios_camada_escondida):
-                change = residuos_escondida[j] * self.entrada[i]
-                self.pesos_camada_escondida[i][j] = self.pesos_camada_escondida[i][
-                    j] + (self.taxa_aprendizado * change)
+                if i != self.qtd_entrada:
+                    self.pesos_camada_escondida[i][j] += (self.taxa_aprendizado * residuos_escondida[j] * self.entrada[i])
+                else:
+                    self.pesos_camada_escondida[i][j] += (self.taxa_aprendizado * residuos_escondida[j] * -1)
 
-    def teste(self, entradas_saidas):
-        for p in entradas_saidas:
+    def teste(self, entradas_saidas, saida_desejada):
+        print("--------------------------------------")
+        print("Saida desejada:")
+
+        for index, saida in enumerate(saida_desejada):
+            print("{}: {}".format(index, saida))
+
+        print("Saída encontrada:")
+
+        for index, p in enumerate(entradas_saidas):
             array = self.forward(p[0])
-            print("Entradas: " + str(p[0]) + ' - Saída encontrada: ' + str(array[0]))
+            for index in range(len(array)):
+                array[index] = round(array[index], 1)
+            print("{}: {}".format(index, array))
 
     def treinar(self, entradas_saidas):
 
