@@ -17,11 +17,12 @@ def derivada_funcao_ativacao(x): # derivada da tangente hiperbolica
 
 class Rede:
 
-    def __init__(self, qtd_entrada, qtd_neuronios_camada_escondida, qtd_neuronios_camada_saida, taxa_aprendizado, max_interacoes, precisao):
+    def __init__(self, qtd_entrada, qtd_neuronios_camada_escondida, qtd_neuronios_camada_saida, taxa_aprendizado, max_interacoes, precisao, momentum):
 
         self.taxa_aprendizado = taxa_aprendizado
         self.max_interacoes = max_interacoes
         self.precisao = precisao
+        self.momentum = momentum
 
         self.qtd_entrada = qtd_entrada # +1 -> bias
         self.qtd_neuronios_camada_escondida = qtd_neuronios_camada_escondida # +1 -> bias
@@ -79,7 +80,7 @@ class Rede:
                 self.pesos_camada_saida[i][j] = rand(-0.5, 0.5)
                 print("{}".format(self.pesos_camada_saida[i][j]))
 
-    def treinar(self, entradas_saidas):
+    def treinar(self, entradas_saidas, file):
 
         epocas = 0
 
@@ -104,9 +105,10 @@ class Rede:
             epocas += 1
 
         print("Epocas: {}".format(epocas))
+        file.write("Epocas: {}\n".format(epocas))
         # print("EQM: {} / EQM ANTERIOR: {}".format(eqm, erro_anterior))
 
-    def teste(self, entradas_saidas, saida_desejada):
+    def teste(self, entradas_saidas, saida_desejada, file):
         print("--------------------------------------")
         print("Saida desejada:")
 
@@ -127,6 +129,8 @@ class Rede:
                 qtd_acertos += 1
             print("{}: {}".format(index, array))
         print("{}%".format(int(qtd_acertos / len(saida_desejada) * 100)))
+        file.write("{}%\n\n\n".format(int(qtd_acertos / len(saida_desejada) * 100)))
+
 
     # FORWARD FUNCTIONS
     def forward(self, entradas):
