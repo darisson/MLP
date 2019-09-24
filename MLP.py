@@ -80,7 +80,7 @@ class Rede:
                 self.pesos_camada_saida[i][j] = rand(-0.5, 0.5)
                 print("{}".format(self.pesos_camada_saida[i][j]))
 
-    def treinar(self, entradas_saidas, file):
+    def treinar(self, entradas_saidas, file, embaralhar):
 
         epocas = 0
 
@@ -88,7 +88,8 @@ class Rede:
         erro_anterior = 1000
         while (epocas < self.max_interacoes and abs(eqm - erro_anterior) > self.precisao):
 
-            # random.shuffle(entradas_saidas)
+            if embaralhar:
+                random.shuffle(entradas_saidas)
 
             erro_anterior = eqm
             erro = 0
@@ -109,13 +110,13 @@ class Rede:
         # print("EQM: {} / EQM ANTERIOR: {}".format(eqm, erro_anterior))
 
     def teste(self, entradas_saidas, saida_desejada, file):
-        print("--------------------------------------")
-        print("Saida desejada:")
+        # print("--------------------------------------")
+        # print("Saida desejada:")
 
-        for index, saida in enumerate(saida_desejada):
-            print("{}: {}".format(index, saida))
+        # for index, saida in enumerate(saida_desejada):
+        #     print("{}: {}".format(index, saida))
 
-        print("Saída encontrada:")
+        # print("Saída encontrada:")
         qtd_acertos = 0
         for index, p in enumerate(entradas_saidas):
             array = self.forward(p[0])
@@ -127,10 +128,11 @@ class Rede:
                     erro += True
             if not erro:
                 qtd_acertos += 1
-            print("{}: {}".format(index, array))
+            # print("{}: {}".format(index, array))
         print("{}%".format(int(qtd_acertos / len(saida_desejada) * 100)))
-        file.write("{}%\n\n\n".format(int(qtd_acertos / len(saida_desejada) * 100)))
+        file.write("{}%".format(int(qtd_acertos / len(saida_desejada) * 100)))
 
+        return int(qtd_acertos / len(saida_desejada) * 100)
 
     # FORWARD FUNCTIONS
     def forward(self, entradas):
