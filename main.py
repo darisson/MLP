@@ -15,9 +15,9 @@ for index, e in enumerate(entradas):
     entradas_saidas[index].append(entradas[index])
     entradas_saidas[index].append(respostas[index])
 
-TAXA_DE_APRENDIZADO = 0.01
-PRECISAO = 0.01
-MAX_ITERACOES = 20000
+TAXA_DE_APRENDIZADO = 0.1
+PRECISAO = 0.001
+MAX_ITERACOES = 50000
 QTD_ENTRADAS = len(entradas_saidas[0][0])
 QTD_NEURONIOS_CAMADA_ESCONDIDA = 2
 QTD_SAIDAS = len(entradas_saidas[0][1])

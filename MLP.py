@@ -115,7 +115,7 @@ class Rede:
         # calculando erro
         erro = 0
         for i in range(len(saidas_desejadas)):
-            erro = erro + ((saidas_desejadas[i] - self.saida_camada_de_saida[i]) ** 2)
+            erro += ((saidas_desejadas[i] - self.saida_camada_de_saida[i]) ** 2)/2
         return erro
 
     def get_residuos_camada_saida(self, respostas):
@@ -167,12 +167,18 @@ class Rede:
             print("{}: {}".format(index, saida))
 
         print("Saída encontrada:")
-
+        qtd_acertos = 0
         for index, p in enumerate(entradas_saidas):
             array = self.forward(p[0])
-            for index in range(len(array)):
-                array[index] = round(array[index], 1)
+            erro = False
+            for i in range(len(array)):
+                array[i] = round(array[i], 1)
+                if ((array[i] < 0.8 and saida_desejada[index][i] == 1) or (array[i] > -0.8 and saida_desejada[index][i] == -1)) and (not erro):
+                    erro += True
+            if not erro:
+                qtd_acertos += 1
             print("{}: {}".format(index, array))
+        print("{}%".format(int(qtd_acertos/len(saida_desejada) * 100)))
 
     def treinar(self, entradas_saidas):
 
@@ -193,10 +199,10 @@ class Rede:
                 saidas_desejadas = p[1]
 
                 self.forward(entradas)
-                erro = erro + self.backward(saidas_desejadas)
+                erro += self.backward(saidas_desejadas)
             eqm = erro/len(entradas_saidas)
             if epocas % 100 == 0:
-                print("Treinando epoca: {}".format(epocas))
+                print("Treinando epoca: {} / erro: {}".format(epocas, eqm))
 
             epocas += 1
 
