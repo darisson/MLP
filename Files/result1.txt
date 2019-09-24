@@ -354,4 +354,38 @@ Teste Xnoise5:  95%
 Teste Xnoise10:  0%
 Media taxa de recuperação: 65.0%
 
+-------------------------------------------------------MODE: ONLINE
+TAXA_DE_APRENDIZADO: 0.1
+PRECISAO: 1e-06
+MAX_ITERACOES: 10000
+QTD_ENTRADAS: 21
+QTD_NEURONIOS_CAMADA_ESCONDIDA: 10
+QTD_SAIDAS: 15
+
+Epocas: 8237
+Teste amostra de treinamento:  61%
+Testes -------------------------------
+
+Teste Xnoise2:  57%
+Teste Xnoise5:  42%
+Teste Xnoise10:  0%
+Media taxa de recuperação: 33.0%
+
+-------------------------------------------------------MODE: ONLINE
+TAXA_DE_APRENDIZADO: 0.1
+PRECISAO: 1e-06
+MAX_ITERACOES: 10000
+QTD_ENTRADAS: 63
+QTD_NEURONIOS_CAMADA_ESCONDIDA: 10
+QTD_SAIDAS: 15
+
+Epocas: 813
+Teste amostra de treinamento:  100%
+Testes -------------------------------
+
+Teste Xnoise2:  100%
+Teste Xnoise5:  100%
+Teste Xnoise10:  0%
+Media taxa de recuperação: 66.66666666666667%
+
 -------------------------------------------------------

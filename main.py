@@ -16,6 +16,20 @@ entradas_saidas_2 = []
 entradas_saidas_5 = []
 entradas_saidas_10 = []
 
+EMBARALHAR = True
+ONLINE = True
+NORMALIZADO = False
+
+# -------------------------------------- NORMALIZACAO --------------------------------------------
+
+if NORMALIZADO:
+    entradas = ReaderManager.normalizar(entradas)
+    entradasXnoise2 = ReaderManager.normalizar(entradasXnoise2)
+    entradasXnoise5 = ReaderManager.normalizar(entradasXnoise5)
+    entradasXnoise10 = ReaderManager.normalizar(entradasXnoise10)
+
+# ------------------------------------------------------------------------------------------------
+
 for index, e in enumerate(entradas):
     entradas_saidas.append([])
     entradas_saidas[index].append(entradas[index])
@@ -43,8 +57,7 @@ MAX_ITERACOES = 10000
 QTD_ENTRADAS = len(entradas_saidas[0][0])
 QTD_NEURONIOS_CAMADA_ESCONDIDA = 10
 QTD_SAIDAS = len(entradas_saidas[0][1])
-EMBARALHAR = False
-ONLINE = True
+
 # ------------------------------------------------------------------------------------------------
 
 print("\nMODE: {}".format("ONLINE" if ONLINE else "OFFLINE"))

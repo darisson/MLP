@@ -1,4 +1,5 @@
 import math
+import numpy as np
 
 XOR_X = './Files/Xor.txt'
 
@@ -102,21 +103,25 @@ class ReaderManager:
         return respostas
 
     @staticmethod
-    def normalizacao(ents):
-        soma = 0
-        media  = 0
-        variancia = 0
-        desv = 0
+    def modulo(entradas):
 
-        for v in ents:
-            soma += v
-        qtd_elementos = len(ents)
-        media = soma/float(qtd_elementos)
-        for valor in ents:
-            soma += math.pow((valor - media), 2)
-        variancia = soma/(float(len(ents))-1)
+        modulos = []
+        for i in range(len(entradas)):
+            soma = 0
+            for x in entradas:
+                soma += x[i]**2
 
-        desv = math.sqrt(variancia)
+            modulos.append(math.sqrt(soma))
+        return modulos
 
-        return (media, desv)
+    @staticmethod
+    def normalizar(entradas):
+        modulos = ReaderManager.modulo(entradas)
+        entradasAux = []
+        for i in range(len(entradas)):
+            vetor = []
+            for x in entradas:
+                vetor.append(x[i]/modulos[i])
+            entradasAux.append(vetor)
 
+        return entradasAux
