@@ -18,7 +18,7 @@ entradas_saidas_10 = []
 
 EMBARALHAR = True
 ONLINE = True
-NORMALIZADO = False
+NORMALIZADO = True
 
 # -------------------------------------- NORMALIZACAO --------------------------------------------
 
@@ -51,11 +51,11 @@ for index, e in enumerate(entradas_saidas_10):
     entradas_saidas_10[index].append(respostas[index])
 # ---------------------------------------- CONFIGURACAO ------------------------------------------
 MOMENTUM = 0.5
-TAXA_DE_APRENDIZADO = 0.1
+TAXA_DE_APRENDIZADO = 0.05
 PRECISAO = 0.000001
 MAX_ITERACOES = 10000
 QTD_ENTRADAS = len(entradas_saidas[0][0])
-QTD_NEURONIOS_CAMADA_ESCONDIDA = 10
+QTD_NEURONIOS_CAMADA_ESCONDIDA = 2
 QTD_SAIDAS = len(entradas_saidas[0][1])
 
 # ------------------------------------------------------------------------------------------------
@@ -91,19 +91,20 @@ p = rede.teste(entradas_saidas, respostas, file)
 # ------------------------------------------------------------------------------------------------
 # ------------------------------------------- TESTE ----------------------------------------------
 file.write("\nTestes -------------------------------\n")
+
+# Teste com amostras Xnoise2
 file.write("\nTeste Xnoise2:  ")
 print("\nTeste Xnoise2:  ")
-# Teste com amostras Xnoise2
 P1 = rede.teste(entradas_saidas_2, respostas, file)
 
+# Teste com amostras Xnoise5
 file.write("\nTeste Xnoise5:  ")
 print("\nTeste Xnoise5:  ")
-# Teste com amostras Xnoise5
 P2 = rede.teste(entradas_saidas_5, respostas, file)
 
+# Teste com amostras Xnoise10
 file.write("\nTeste Xnoise10:  ")
 print("\nTeste Xnoise10:  ")
-# Teste com amostras Xnoise10
 P3 = rede.teste(entradas_saidas_10, respostas, file)
 
 file.write("\nMedia taxa de recuperação: {}%\n".format((P1 + P2 + P3)/3))

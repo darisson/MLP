@@ -5,7 +5,6 @@ import random
 import numpy
 from sklearn.utils import shuffle
 
-random.seed(2)
 # General Functions
 def rand(a, b):
     return random.uniform(a, b)
@@ -210,7 +209,7 @@ class Rede:
         for i in range(self.qtd_neuronios_camada_escondida):
             erro = 0
             for j in range(self.qtd_neuronios_camada_saida):
-                erro = erro + residuos_saida[j] * self.pesos_camada_saida[i][j]
+                erro += residuos_saida[j] * self.pesos_camada_saida[i][j]
             residuos_escondida[i] = derivada_funcao_ativacao(self.I_camada_escondida[i]) * erro
 
         return residuos_escondida
