@@ -3,6 +3,7 @@
 import math
 import random
 import numpy
+from sklearn.utils import shuffle
 
 random.seed(2)
 # General Functions
@@ -89,7 +90,7 @@ class Rede:
         while (epocas < self.max_interacoes and abs(eqm - erro_anterior) > self.precisao):
 
             if embaralhar:
-                random.shuffle(entradas_saidas)
+                entradas_saidas = shuffle(entradas_saidas, random_state=0)
 
             erro_anterior = eqm
             erro = 0
@@ -148,13 +149,13 @@ class Rede:
         for j in range(self.qtd_neuronios_camada_escondida):
             somatorio = 0
             for i in range(self.qtd_entrada):
-                somatorio = somatorio + self.entrada[i] * self.pesos_camada_escondida[i][j]
-            somatorio = somatorio + (-1 * self.pesos_camada_escondida[self.qtd_entrada][j])
+                somatorio += self.entrada[i] * self.pesos_camada_escondida[i][j]
+            somatorio += (-1 * self.pesos_camada_escondida[self.qtd_entrada][j])
 
             self.I_camada_escondida[j] = somatorio
 
+            self.saida_camada_escondida[j] = funcao_ativacao_tangente_hiperbolica(self.I_camada_escondida[j])
 
-            self.saida_camada_escondida[j] = funcao_ativacao_tangente_hiperbolica(somatorio)
         self.I_camada_escondida_off.append(self.I_camada_escondida)
         self.saida_camada_escondida_off.append(self.saida_camada_escondida)
 
@@ -162,12 +163,13 @@ class Rede:
         for j in range(self.qtd_neuronios_camada_saida):
             somatorio = 0
             for i in range(self.qtd_neuronios_camada_escondida):
-                somatorio = somatorio + self.saida_camada_escondida[i] * self.pesos_camada_saida[i][j]
-            somatorio = somatorio + (-1 * self.pesos_camada_saida[self.qtd_neuronios_camada_escondida][j])
+                somatorio += self.saida_camada_escondida[i] * self.pesos_camada_saida[i][j]
+            somatorio += (-1 * self.pesos_camada_saida[self.qtd_neuronios_camada_escondida][j])
 
             self.I_camada_de_saida[j] = somatorio
 
-            self.saida_camada_de_saida[j] = funcao_ativacao_tangente_hiperbolica(somatorio)
+            self.saida_camada_de_saida[j] = funcao_ativacao_tangente_hiperbolica(self.I_camada_de_saida[j])
+
         self.I_camada_de_saida_off.append(self.I_camada_de_saida)
         self.saida_camada_saida_off.append(self.saida_camada_de_saida)
 
@@ -215,12 +217,12 @@ class Rede:
 
     def ajustar_pesos_camada_saida(self, residuos_saida):
 
-        for i in range(self.qtd_neuronios_camada_escondida):
+        for i in range(self.qtd_neuronios_camada_escondida + 1):
             for j in range(self.qtd_neuronios_camada_saida):
-                if i != self.qtd_entrada:
+                if i != self.qtd_neuronios_camada_escondida:
                     self.pesos_camada_saida[i][j] += (self.taxa_aprendizado * residuos_saida[j] * self.saida_camada_escondida[i])
                 else:
-                    self.pesos_camada_escondida[i][j] += (self.taxa_aprendizado * residuos_saida[j] * -1)
+                    self.pesos_camada_saida[i][j] += (self.taxa_aprendizado * residuos_saida[j] * -1)
 
 
     def ajustar_pesos_camada_escondida(self, residuos_escondida):
@@ -231,7 +233,7 @@ class Rede:
                     self.pesos_camada_escondida[i][j] += (self.taxa_aprendizado * residuos_escondida[j] * self.entrada[i])
                 else:
                     self.pesos_camada_escondida[i][j] += (self.taxa_aprendizado * residuos_escondida[j] * -1)
-
+# ------------------------------------------ Offline -------------------------------------------
     def treinar_offline(self, entradas_saidas):
 
         epocas = 0

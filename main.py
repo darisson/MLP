@@ -41,9 +41,9 @@ TAXA_DE_APRENDIZADO = 0.1
 PRECISAO = 0.000001
 MAX_ITERACOES = 10000
 QTD_ENTRADAS = len(entradas_saidas[0][0])
-QTD_NEURONIOS_CAMADA_ESCONDIDA = 2
+QTD_NEURONIOS_CAMADA_ESCONDIDA = 10
 QTD_SAIDAS = len(entradas_saidas[0][1])
-EMBARALHAR = True
+EMBARALHAR = False
 ONLINE = True
 # ------------------------------------------------------------------------------------------------
 

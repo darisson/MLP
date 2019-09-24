@@ -111,4 +111,247 @@ Teste Xnoise5:  90%
 Teste Xnoise10:  0%
 Media taxa de recuperação: 63.333333333333336%
 
+-------------------------------------------------------MODE: ONLINE
+TAXA_DE_APRENDIZADO: 0.1
+PRECISAO: 1e-06
+MAX_ITERACOES: 10000
+QTD_ENTRADAS: 63
+QTD_NEURONIOS_CAMADA_ESCONDIDA: 2
+QTD_SAIDAS: 15
+
+Epocas: 10000
+Teste amostra de treinamento:  0%
+Testes -------------------------------
+
+Teste Xnoise2:  0%
+Teste Xnoise5:  0%
+Teste Xnoise10:  0%
+Media taxa de recuperação: 0.0%
+
+-------------------------------------------------------MODE: ONLINE
+TAXA_DE_APRENDIZADO: 0.1
+PRECISAO: 1e-06
+MAX_ITERACOES: 10000
+QTD_ENTRADAS: 63
+QTD_NEURONIOS_CAMADA_ESCONDIDA: 2
+QTD_SAIDAS: 15
+
+Epocas: 10000
+Teste amostra de treinamento:  0%
+Testes -------------------------------
+
+Teste Xnoise2:  0%
+Teste Xnoise5:  0%
+Teste Xnoise10:  0%
+Media taxa de recuperação: 0.0%
+
+-------------------------------------------------------MODE: ONLINE
+TAXA_DE_APRENDIZADO: 0.1
+PRECISAO: 1e-06
+MAX_ITERACOES: 10000
+QTD_ENTRADAS: 63
+QTD_NEURONIOS_CAMADA_ESCONDIDA: 2
+QTD_SAIDAS: 15
+
+Epocas: 474
+Teste amostra de treinamento:  0%
+Testes -------------------------------
+
+Teste Xnoise2:  0%
+Teste Xnoise5:  0%
+Teste Xnoise10:  0%
+Media taxa de recuperação: 0.0%
+
+-------------------------------------------------------MODE: ONLINE
+TAXA_DE_APRENDIZADO: 0.1
+PRECISAO: 1e-06
+MAX_ITERACOES: 10000
+QTD_ENTRADAS: 63
+QTD_NEURONIOS_CAMADA_ESCONDIDA: 10
+QTD_SAIDAS: 15
+
+Epocas: 764
+Teste amostra de treinamento:  100%
+Testes -------------------------------
+
+Teste Xnoise2:  100%
+Teste Xnoise5:  90%
+Teste Xnoise10:  0%
+Media taxa de recuperação: 63.333333333333336%
+
+-------------------------------------------------------MODE: ONLINE
+TAXA_DE_APRENDIZADO: 0.1
+PRECISAO: 1e-06
+MAX_ITERACOES: 10000
+QTD_ENTRADAS: 63
+QTD_NEURONIOS_CAMADA_ESCONDIDA: 10
+QTD_SAIDAS: 15
+
+Epocas: 764
+Teste amostra de treinamento:  100%
+Testes -------------------------------
+
+Teste Xnoise2:  100%
+Teste Xnoise5:  90%
+Teste Xnoise10:  0%
+Media taxa de recuperação: 63.333333333333336%
+
+-------------------------------------------------------MODE: ONLINE
+TAXA_DE_APRENDIZADO: 0.1
+PRECISAO: 1e-06
+MAX_ITERACOES: 10000
+QTD_ENTRADAS: 63
+QTD_NEURONIOS_CAMADA_ESCONDIDA: 10
+QTD_SAIDAS: 15
+
+Epocas: 2
+Teste amostra de treinamento:  0%
+Testes -------------------------------
+
+Teste Xnoise2:  0%
+Teste Xnoise5:  0%
+Teste Xnoise10:  0%
+Media taxa de recuperação: 0.0%
+
+-------------------------------------------------------MODE: ONLINE
+TAXA_DE_APRENDIZADO: 0.1
+PRECISAO: 1e-06
+MAX_ITERACOES: 10000
+QTD_ENTRADAS: 63
+QTD_NEURONIOS_CAMADA_ESCONDIDA: 10
+QTD_SAIDAS: 15
+
+MODE: ONLINE
+TAXA_DE_APRENDIZADO: 0.1
+PRECISAO: 1e-06
+MAX_ITERACOES: 10000
+QTD_ENTRADAS: 63
+QTD_NEURONIOS_CAMADA_ESCONDIDA: 10
+QTD_SAIDAS: 15
+
+MODE: ONLINE
+TAXA_DE_APRENDIZADO: 0.1
+PRECISAO: 1e-06
+MAX_ITERACOES: 10000
+QTD_ENTRADAS: 63
+QTD_NEURONIOS_CAMADA_ESCONDIDA: 10
+QTD_SAIDAS: 15
+
+Epocas: 208
+Teste amostra de treinamento:  0%
+Testes -------------------------------
+
+Teste Xnoise2:  0%
+Teste Xnoise5:  0%
+Teste Xnoise10:  0%
+Media taxa de recuperação: 0.0%
+
+-------------------------------------------------------MODE: ONLINE
+TAXA_DE_APRENDIZADO: 0.1
+PRECISAO: 1e-06
+MAX_ITERACOES: 10000
+QTD_ENTRADAS: 63
+QTD_NEURONIOS_CAMADA_ESCONDIDA: 10
+QTD_SAIDAS: 15
+
+MODE: ONLINE
+TAXA_DE_APRENDIZADO: 0.1
+PRECISAO: 1e-06
+MAX_ITERACOES: 10000
+QTD_ENTRADAS: 63
+QTD_NEURONIOS_CAMADA_ESCONDIDA: 10
+QTD_SAIDAS: 15
+
+MODE: ONLINE
+TAXA_DE_APRENDIZADO: 0.1
+PRECISAO: 1e-06
+MAX_ITERACOES: 10000
+QTD_ENTRADAS: 63
+QTD_NEURONIOS_CAMADA_ESCONDIDA: 10
+QTD_SAIDAS: 15
+
+Epocas: 208
+Teste amostra de treinamento:  0%
+Testes -------------------------------
+
+Teste Xnoise2:  0%
+Teste Xnoise5:  0%
+Teste Xnoise10:  0%
+Media taxa de recuperação: 0.0%
+
+-------------------------------------------------------MODE: ONLINE
+TAXA_DE_APRENDIZADO: 0.1
+PRECISAO: 1e-06
+MAX_ITERACOES: 10000
+QTD_ENTRADAS: 63
+QTD_NEURONIOS_CAMADA_ESCONDIDA: 10
+QTD_SAIDAS: 15
+
+Epocas: 208
+Teste amostra de treinamento:  0%
+Testes -------------------------------
+
+Teste Xnoise2:  0%
+Teste Xnoise5:  0%
+Teste Xnoise10:  0%
+Media taxa de recuperação: 0.0%
+
+-------------------------------------------------------MODE: ONLINE
+TAXA_DE_APRENDIZADO: 0.1
+PRECISAO: 1e-06
+MAX_ITERACOES: 10000
+QTD_ENTRADAS: 63
+QTD_NEURONIOS_CAMADA_ESCONDIDA: 10
+QTD_SAIDAS: 15
+
+MODE: ONLINE
+TAXA_DE_APRENDIZADO: 0.1
+PRECISAO: 1e-06
+MAX_ITERACOES: 10000
+QTD_ENTRADAS: 63
+QTD_NEURONIOS_CAMADA_ESCONDIDA: 10
+QTD_SAIDAS: 15
+
+MODE: ONLINE
+TAXA_DE_APRENDIZADO: 0.1
+PRECISAO: 1e-06
+MAX_ITERACOES: 10000
+QTD_ENTRADAS: 63
+QTD_NEURONIOS_CAMADA_ESCONDIDA: 10
+QTD_SAIDAS: 15
+
+MODE: ONLINE
+TAXA_DE_APRENDIZADO: 0.1
+PRECISAO: 1e-06
+MAX_ITERACOES: 10000
+QTD_ENTRADAS: 63
+QTD_NEURONIOS_CAMADA_ESCONDIDA: 10
+QTD_SAIDAS: 15
+
+Epocas: 376
+Teste amostra de treinamento:  9%
+Testes -------------------------------
+
+Teste Xnoise2:  9%
+Teste Xnoise5:  9%
+Teste Xnoise10:  0%
+Media taxa de recuperação: 6.0%
+
+-------------------------------------------------------MODE: ONLINE
+TAXA_DE_APRENDIZADO: 0.1
+PRECISAO: 1e-06
+MAX_ITERACOES: 10000
+QTD_ENTRADAS: 63
+QTD_NEURONIOS_CAMADA_ESCONDIDA: 10
+QTD_SAIDAS: 15
+
+Epocas: 745
+Teste amostra de treinamento:  100%
+Testes -------------------------------
+
+Teste Xnoise2:  100%
+Teste Xnoise5:  95%
+Teste Xnoise10:  0%
+Media taxa de recuperação: 65.0%
+
 -------------------------------------------------------
